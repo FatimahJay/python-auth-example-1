@@ -1,0 +1,30 @@
+name: Python Application CI
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  name: Python Application CI
+
+on:
+  pull_request:
+    branches: [ main ]
+
+name: CI/CD
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build_and_push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Build and Push Docker Image
+        run: |
+          docker build -t fatimaj/python-auth-example .
+          docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
+          docker push fatimaj/python-auth-example
