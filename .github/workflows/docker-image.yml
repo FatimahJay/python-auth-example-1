@@ -25,6 +25,6 @@ jobs:
 
       - name: Build and Push Docker Image
         run: |
-          docker build -t fatimaj/python-auth-example .
+          docker build -t fatimaj/python-auth-example-1 .
           docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
-          docker push fatimaj/python-auth-example
+          docker push fatimaj/python-auth-example-1
